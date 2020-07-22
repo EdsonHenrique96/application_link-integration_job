@@ -7,7 +7,13 @@ const cronTime = process.env.CRON_TIME || '0 * * * * *';
 const job = new CronJob(
   cronTime,
   async () => {
-    await syncDeals();
+    try {
+      console.info('Starting synchronization...');
+      await syncDeals();
+      console.info('Synchronization succeeded!');
+    } catch (err) {
+      console.error('The synchronization process failed: ', err);
+    }
   },
   null,
   true,
