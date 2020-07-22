@@ -3,7 +3,7 @@ import linkIntegration from '../repositories/linkIntegration';
 
 const syncDeals = async (): Promise<void> => {
   try {
-    const data = await pipedrive.getDeals();
+    const data = await pipedrive.getDealsWon();
     await linkIntegration.sendDeals(data);
   } catch (err) {
     console.log(err);

@@ -8,9 +8,9 @@ const HttpClient = axios.create({
 });
 
 const pipedrive = {
-  async getDeals(): Promise<any> {
+  async getDealsWon(): Promise<any> {
     const response = await HttpClient.get('/deals', {
-      params: { api_token: PIPEDRIVE_API_KEY },
+      params: { api_token: PIPEDRIVE_API_KEY, status: 'won' },
     });
 
     return response.data;
